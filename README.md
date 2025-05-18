@@ -67,12 +67,54 @@ avm use 0.29.0
 
 * * *
 
+## Docker Hub Usage
+
+To publish your image to Docker Hub and use it from anywhere:
+
+### Create Dockerfile
+
+Write your build instructions:
+
+```bash
+nano Dockerfile
+```
+
+### Build Docker Image
+
+```bash
+sudo docker build -f Dockerfile -t yourdockerhubuser/image-name .
+```
+
+### Login to Docker Hub
+
+```bash
+sudo docker login -u <username>
+```
+
+### Push the Image
+
+```bash
+sudo docker push yourdockerhubuser/image-name
+```
+
+### Pull the Image
+
+```bash
+sudo docker pull yourdockerhubuser/image-name
+```
+
+### Start the Container
+
+```bash
+sudo docker run -it yourdockerhubuser/image-name bash
+```
+
+* * *
+
 ## Cleanup & Optimization
 
-* All unnecessary packages are removed post-installation using:
-
-  * `apt autoremove`, `apt clean`, `apt autoclean`
-* This helps reduce image size and speeds up build time on future runs.
+* The image is configured with `noninteractive` frontend to avoid manual prompts during package installation.
+* `apt clean`, `autoremove`, and `autoclean` help reduce the image size.
 
 * * *
 
